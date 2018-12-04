@@ -27,7 +27,7 @@ function decodeToken(token, cb) {
 
   cb(null, payload);
   } catch (error) {
-    cb(err, null);
+    cb(error, null);
   }
 
 
