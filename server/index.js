@@ -1,6 +1,7 @@
 // Express imports
 const express = require('express');
 const server = express();
+const bodyparser = require('body-parser');
 
 // Database imports
 const mongoose = require('mongoose');
@@ -9,11 +10,14 @@ const DATABASE_NAME = 'letzgo_database';
 const CONNECTION_STRING = '';
 
 
+server.use(bodyparser.json());
 
 server.get('/api', (req, res) => {
   res.json("Welcome to the V1 LetzGo api")
 });
 
+// Auth
+server.use('/api', require('./routes/authentication_routes_v1'));
 // Artist routes
 server.use('/artists', require('./routes/artist_routes_v1'));
 // Concert routes
