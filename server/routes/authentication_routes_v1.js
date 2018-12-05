@@ -7,7 +7,7 @@ const userRepo = "";
 
 router.all(new RegExp("^(?!\/login$|\/register$).*"), (req, res, next) => {
   // Get token from headers
-  const token = request.header('X-Access-Token');
+  const token = req.header('X-Access-Token');
 
   authentication.decodeToken(token, (error, payload) => {
     if (error) {
